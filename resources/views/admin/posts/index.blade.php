@@ -1,37 +1,30 @@
 @extends('layouts.app')
 
 @section('content')
-<table class="table">
+<table class="table table-dark table-striped">
     <thead>
       <tr>
-        <th scope="col">#</th>
-        <th scope="col">First</th>
-        <th scope="col">Last</th>
-        <th scope="col">Handle</th>
+        <th scope="col">ID</th>
+        <th scope="col">Author</th>
+        <th scope="col">Title</th>
+        <th scope="col"></th>
       </tr>
     </thead>
     <tbody>
         @forelse ($posts as $post)
-      <tr>
-        <th scope="row">
-            {{ $post->id }}
-        </th>
-        <td>{{ $post->author }}</td>
-        <td>{{ $post->title }}</td>
-        <td>@mdo</td>
-      </tr>
-      @endforelse
-      <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td colspan="2">Larry the Bird</td>
-        <td>@twitter</td>
-      </tr>
+        <tr>
+          <th scope="row">
+              {{ $post->id }}
+          </th>
+          <td>{{ $post->author }}</td>
+          <td>{{ $post->title }}</td>
+          <td><a href="{{ route('admin.posts.show', $post->id) }}" class="btn btn-sm btn-primary">View</a></td>
+          <td><a href="" class="btn btn-sm btn-success">Edit</a></td>
+          <td><a href="" class="btn btn-sm btn-danger">Delete</a></td>
+        </tr>
+        @empty
+          
+        @endforelse
     </tbody>
   </table>
 @endsection
